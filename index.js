@@ -11,13 +11,13 @@ const app = express();
 // DB Connection
 dbConnection();
 
-app.use(express.static('public'));
 // settings
-app.set('port', process.env.PORT || 3000);
 // middlawares
 app.use(cors());
+app.use(express.static('public'));
 app.use(express.json());
 
+app.set('port', process.env.PORT || 3000);
 
 app.use('/api/v1/auth', router);
 app.use('/', routerTest);
