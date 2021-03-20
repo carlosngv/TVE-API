@@ -3,12 +3,9 @@ const express = require('express');
 require('dotenv').config();
 const { dbConnection } = require('./db/config');
 const path = require('path');
-const { router } = require('./routes/routes');
 const { routerTest } = require('./routes/routesMux.js');
 const { routerQueries } = require('./routes/queries');
 const app = express();
-const createService = require('statistic-mongoose');
-const Oxygen = require('./models/oxygen')
 
 // DB Connection
 dbConnection();
@@ -21,7 +18,8 @@ app.use(express.static('public'));
 app.use(express.json());
 
 
-app.use('/api/v1/auth', router);
+app.use('/api/v1/auth', require('./routes/auth.routes'));
+app.use('/api/v1/meditions', require('./routes/medition.routes'));
 app.use('/', routerTest);
 app.use('/logic', routerQueries);
 

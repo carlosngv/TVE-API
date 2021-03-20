@@ -59,6 +59,4 @@ router.post('/renew', validateJWT, revalidateToken);
 // recovery
 
 
-module.exports = {
-    router,
-};
+module.exports = router;
