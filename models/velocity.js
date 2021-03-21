@@ -1,8 +1,7 @@
 const { Schema, model } = require('mongoose');
 
-
-const meditionSchema = new Schema({
-    type: {
+const velocitySchema = new Schema({
+    velocity: {
         type: String,
         required: false
     },
@@ -12,4 +11,5 @@ const meditionSchema = new Schema({
 },
     { timestamps: true }
 );
-module.exports = model('Medition', meditionSchema);
+
+module.exports = model('Velocity', velocitySchema);
