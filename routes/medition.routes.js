@@ -1,11 +1,14 @@
 const { Router } = require('express');
 const { validateFields } = require('../middlewares/fiel-validators');
 const { check } = require('express-validator');
-const { createOxygen, getAll_oxygen, getOxygen } = require('../controllers/oxygenController');
-const { createTemperature, getAll_temperature, getTemperature } = require('../controllers/temperatureController');
-const { createRhythm, getRhythm, getAll_rythem } = require('../controllers/rhythmController');
-const { createUserTest } = require('../controllers/userController');
-const { addVelocity,getVelocities } = require('../controllers/velocity.controller');
+const { createOxygen, getAll_oxygen, getOxygen } = require('../controllers/oxygen.controller');
+const { createTemperature, getAll_temperature, getTemperature } = require('../controllers/temperature.controller');
+const { createRhythm, getRhythm, getAll_rythem } = require('../controllers/rhythm.controller');
+const { createUserTest } = require('../controllers/user.controller');
+const { addVelocity,getVelocitiesByUser } = require('../controllers/velocity.controller');
+const { createDistance, getDistanceByUser } = require('../controllers/distance.controller');
+const { createRepetition, getRepetitionByUser } = require('../controllers/repetition.controller');
+
 const router = Router();
 
 // http://localhost:PORT/api/v1/meditions/
@@ -22,9 +25,14 @@ router.route('/rhythm').post(createRhythm);
 router.route('/test').post(createUserTest);
 
 // Proyecto 1
-//router.post('/distance', distanceController);
+router.post('/all/distance/new', createDistance);
+router.post('/all/distance/:username', getDistanceByUser);
+
+router.post('/all/repetition/new', createRepetition);
+router.get('/all/repetition/:username', getRepetitionByUser);
+
 router.post('/all/velocity/new', addVelocity);
-router.get('/all/velocity/:username', getVelocities);
+router.get('/all/velocity/:username', getVelocitiesByUser);
 
 
 // getAll

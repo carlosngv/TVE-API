@@ -19,7 +19,7 @@ const addVelocity = (req, res) => {
     }
 }
 
-const getVelocities = async (req, res) => {
+const getVelocitiesByUser = async (req, res) => {
     try {
         const { username } = req.params;
         const velocities = await Velocity.find({ username: username });
@@ -39,5 +39,5 @@ const getVelocities = async (req, res) => {
 
 module.exports = {
     addVelocity,
-    getVelocities
+    getVelocitiesByUser
 }

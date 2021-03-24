@@ -1,10 +1,11 @@
-const Distance = require('../models/distance');
+const Repetition = require('../models/repetition');
 const User = require('../models/user');
-const createDistance = async ( req, res ) => {
+
+const createRepetition = async ( req, res ) => {
     try {
         const { username } = req.body;
 
-        const dbUser = await Distance.findOne( {username} );
+        const dbUser = await User.findOne( { username } );
 
         if(!dbUser) {
             return res.status(400).json({
@@ -13,15 +14,14 @@ const createDistance = async ( req, res ) => {
             });
         }
 
-        const dbDistance = new Distance(req.body);
+        const dbRepetition = new Repetition( req.body );
 
-        await dbDistance.save();
+        await dbRepetition.save();
 
         return res.status(200).json({
             ok: true,
-            msg: '¡Se ha guardado el valor de la distancia exitosamente!'
+            msg: '¡Se ha guardado la repetición exitosamente!'
         });
-
 
     } catch (error) {
         console.log(error);
@@ -32,12 +32,12 @@ const createDistance = async ( req, res ) => {
     }
 }
 
-const getDistanceByUser = async( req, res ) => {
+const getRepetitionByUser = async ( req, res ) => {
     try {
 
         const { username } = req.params;
 
-        const dbUser = await Distance.findOne( {username} );
+        const dbUser = await User.findOne( {username} );
 
         if(!dbUser) {
             return res.status(400).json({
@@ -46,12 +46,12 @@ const getDistanceByUser = async( req, res ) => {
             });
         }
 
-        const dbDistance = await Distance.find({username});
+        const dbRepetitions = await Repetition.find({username});
 
-        if(dbDistance.length === 0) {
+        if(dbRepetitions.length === 0) {
             return res.status(200).json({
                 ok: true,
-                msg: 'El usuario aún no tiene medidas de velocidad.'
+                msg: 'El usuario aún no tiene repeticiones.'
             });
         }
 
@@ -67,6 +67,6 @@ const getDistanceByUser = async( req, res ) => {
 
 
 module.exports = {
-    getDistanceByUser,
-    createDistance
+    createRepetition,
+    getRepetitionByUser
 }
