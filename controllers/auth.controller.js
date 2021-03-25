@@ -115,10 +115,7 @@ const revalidateToken = async () => {
 
 const loginMobile = async (req, res) => {
 
-    const {username, password} = req.body;
-    console.log('BODY',req.body);
-    console.log('ID',dbUser.uid);
-
+    let username, password = req.params;
     try {
 
         dbUser = await User.findOne({username});
@@ -137,9 +134,6 @@ const loginMobile = async (req, res) => {
                 msg: 'La contraseña no es válida'
             });
         }
-
-        console.log('BODY',req.body);
-        console.log('ID',dbUser.uid);
 
         res.status(200).json({
             ok: true,
