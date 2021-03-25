@@ -1,6 +1,4 @@
 const { Router } = require('express');
-const { validateFields } = require('../middlewares/fiel-validators');
-const { check } = require('express-validator');
 const { createOxygen, getAll_oxygen, getOxygen } = require('../controllers/oxygen.controller');
 const { createTemperature, getAll_temperature, getTemperature } = require('../controllers/temperature.controller');
 const { createRhythm, getRhythm, getAll_rythem } = require('../controllers/rhythm.controller');
@@ -8,6 +6,7 @@ const { createUserTest } = require('../controllers/user.controller');
 const { addVelocity,getVelocitiesByUser } = require('../controllers/velocity.controller');
 const { createDistance, getDistanceByUser } = require('../controllers/distance.controller');
 const { createRepetition, getRepetitionByUser } = require('../controllers/repetition.controller');
+const { getRenditionsByUser, addRendition } = require('../controllers/rendition.controller');
 
 const router = Router();
 
@@ -34,6 +33,8 @@ router.get('/all/repetition/:username', getRepetitionByUser);
 router.post('/all/velocity/new', addVelocity);
 router.get('/all/velocity/:username', getVelocitiesByUser);
 
+router.post('/all/velocity/new', addRendition);
+router.get('/all/velocity/:username', getRenditionsByUser);
 
 // getAll
 router.route('/all/oxygen/:id').get(getAll_oxygen);

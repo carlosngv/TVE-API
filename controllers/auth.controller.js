@@ -106,16 +106,56 @@ const logUser = async (req, res) => {
 const revalidateToken = async () => {
     const { uid, username } = req;
     const token = await createJWT(uid, username);
-    res.json({
+    res.status(200).json({
         uid,
         username,
         token,
     });
 }
 
+const loginMobile = async () => {
+
+    let username, password = req.params;
+
+    try {
+
+        dbUser = await User.findOne({username});
+        if(!dbUser) {
+            return res.code(400).json({
+                ok: false,
+                msg: 'El usuario no existe.'
+            });
+        }
+
+        const validPassword = await bcrypt.compareSync(dbUser.password, password);
+
+        if(!validPassword) {
+            return res.code(400).json({
+                ok: false,
+                msg: 'La contraseña no es válida'
+            });
+        }
+
+        res.status(200).json({
+            ok: true,
+            msg: 'Se ha loggeado el usuario.',
+            uid: dbUser.uid,
+        });
+
+
+
+    } catch (error) {
+        return res.status(400).json({
+            ok: false,
+            msg: "Contacte al administrador.",
+        });
+    }
+}
+
 
 module.exports = {
     createUser,
     logUser,
-    revalidateToken
+    revalidateToken,
+    loginMobile
 }

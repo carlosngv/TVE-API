@@ -20,6 +20,7 @@ router.post('/new', [
     validateFields
 ], createUser);
 
+router.post('/mobile', )
 
 router.post('/renew', validateJWT, revalidateToken);
 
