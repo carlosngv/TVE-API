@@ -136,7 +136,7 @@ const loginMobile = async (req, res) => {
             });
         }
 
-        res.status(200).json({
+        return res.status(200).json({
             ok: true,
             msg: 'Se ha loggeado el usuario.',
             uid: dbUser.uid,
