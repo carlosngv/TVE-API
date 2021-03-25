@@ -136,7 +136,7 @@ const loginMobile = async (req, res) => {
             });
         }
 
-        console.log('BODY',req.body);
+        console.log('BODY',req.params);
         console.log('ID',dbUser.uid);
 
         res.status(200).json({
