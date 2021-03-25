@@ -20,7 +20,7 @@ router.post('/new', [
     validateFields
 ], createUser);
 
-router.post('/mobile', loginMobile);
+router.post('/mobile/:username/:password', loginMobile);
 
 router.post('/renew', validateJWT, revalidateToken);
 

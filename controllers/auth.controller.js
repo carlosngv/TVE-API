@@ -115,7 +115,7 @@ const revalidateToken = async () => {
 
 const loginMobile = async () => {
 
-    let username, password = req.params;
+    const {username, password} = req.params;
 
     try {
 
