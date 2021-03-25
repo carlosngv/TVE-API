@@ -113,7 +113,7 @@ const revalidateToken = async () => {
     });
 }
 
-const loginMobile = async () => {
+const loginMobile = async (req, res) => {
 
     const {username, password} = req.params;
 
