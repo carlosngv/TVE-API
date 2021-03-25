@@ -136,6 +136,9 @@ const loginMobile = async (req, res) => {
             });
         }
 
+        console.log('BODY',req.body);
+        console.log('ID',dbUser.uid);
+
         res.status(200).json({
             ok: true,
             msg: 'Se ha loggeado el usuario.',
