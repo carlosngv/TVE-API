@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 const { validateFields } = require('../middlewares/fiel-validators');
-const { logUser, createUser, revalidateToken } = require('../controllers/auth.controller');
+const { logUser, createUser, revalidateToken, loginMobile } = require('../controllers/auth.controller');
 const { validateJWT } = require('../middlewares/jwt-valiadtion');
 const router = Router();
 
@@ -20,7 +20,7 @@ router.post('/new', [
     validateFields
 ], createUser);
 
-router.post('/mobile', )
+router.post('/mobile', loginMobile);
 
 router.post('/renew', validateJWT, revalidateToken);
 
