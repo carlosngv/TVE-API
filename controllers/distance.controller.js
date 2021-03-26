@@ -4,7 +4,7 @@ const createDistance = async ( req, res ) => {
     try {
         const { username } = req.body;
 
-        const dbUser = await Distance.findOne( {username} );
+        const dbUser = await User.findOne( {username} );
 
         if(!dbUser) {
             return res.status(400).json({
@@ -37,7 +37,7 @@ const getDistanceByUser = async( req, res ) => {
 
         const { username } = req.params;
 
-        const dbUser = await Distance.findOne( {username} );
+        const dbUser = await User.findOne( {username} );
 
         if(!dbUser) {
             return res.status(400).json({
@@ -54,6 +54,11 @@ const getDistanceByUser = async( req, res ) => {
                 msg: 'El usuario aún no tiene medidas de velocidad.'
             });
         }
+
+        return res.status(200).json( {
+            ok: true,
+            values: dbDistance
+        } )
 
 
     } catch (error) {
