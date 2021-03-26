@@ -49,7 +49,7 @@ const getDistanceByUser = async( req, res ) => {
         const dbDistance = await Distance.find({username});
 
         if(dbDistance.length === 0) {
-            return res.status(200).json({
+            return res.status(400).json({
                 ok: true,
                 msg: 'El usuario aún no tiene medidas de velocidad.'
             });
