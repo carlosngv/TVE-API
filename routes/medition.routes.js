@@ -25,7 +25,7 @@ router.route('/test').post(createUserTest);
 
 // Proyecto 1
 router.post('/all/distance/new', createDistance);
-router.post('/all/distance/:username', getDistanceByUser);
+router.get('/all/distance/:username', getDistanceByUser);
 
 router.post('/all/repetition/new', createRepetition);
 router.get('/all/repetition/:username', getRepetitionByUser);
