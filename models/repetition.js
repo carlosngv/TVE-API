@@ -5,11 +5,9 @@ const repetitionSchema = new Schema({
         type: String,
         required: false
     },
-    distance: {
-        type: String
-    },
-    velocity: {
+    username: {
         type: String,
+        required: true
     }
 },
     { timestamps: true }

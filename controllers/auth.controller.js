@@ -116,9 +116,7 @@ const revalidateToken = async () => {
 const loginMobile = async (req, res) => {
 
     const {username, password} = req.params;
-    console.log('CONTENT', username + ' ' + password);
     try {
-
         dbUser = await User.findOne({username});
         if(!dbUser) {
             return res.code(400).json({
@@ -126,9 +124,10 @@ const loginMobile = async (req, res) => {
                 msg: 'El usuario no existe.'
             });
         }
+        console.log(dbUser);
 
-        const validPassword = await bcrypt.compareSync(dbUser.password, password);
-
+        const validPassword = bcrypt.compareSync(password, dbUser.password);
+        console.log(validPassword)
         if(!validPassword) {
             return res.code(400).json({
                 ok: false,

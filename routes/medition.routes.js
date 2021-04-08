@@ -7,6 +7,7 @@ const { addVelocity,getVelocitiesByUser } = require('../controllers/velocity.con
 const { createDistance, getDistanceByUser } = require('../controllers/distance.controller');
 const { createRepetition, getRepetitionByUser } = require('../controllers/repetition.controller');
 const { getRenditionsByUser, addRendition } = require('../controllers/rendition.controller');
+const { getData } = require('../controllers/mux.controller');
 
 const router = Router();
 
@@ -21,6 +22,7 @@ router.route('/oxygen').post(createOxygen);
 router.route('/temperature').post(createTemperature);
 router.route('/rhythm').post(createRhythm);
 
+router.route('/data').post(getData);
 router.route('/test').post(createUserTest);
 
 // Proyecto 1
