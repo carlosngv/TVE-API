@@ -2,8 +2,8 @@ const { Schema, model } = require('mongoose');
 
 const velocitySchema = new Schema({
     velocity: {
-        type: String,
-        required: false
+        type: Number,
+        required: true
     },
     username: {
         type: String,

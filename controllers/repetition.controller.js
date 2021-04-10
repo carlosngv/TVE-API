@@ -47,15 +47,16 @@ const getRepetitionByUser = async ( req, res ) => {
         }
 
         const dbRepetitions = await Repetition.find({username});
-
         if(dbRepetitions.length === 0) {
             return res.status(200).json({
                 ok: true,
                 msg: 'El usuario aún no tiene repeticiones.'
             });
         }
-
-
+        return res.status(200).json({
+            ok: true,
+            repeticiones: dbRepetitions
+        });
     } catch (error) {
         console.log(error);
         return res.status(400).json({

@@ -2,8 +2,8 @@ const { Schema, model } = require('mongoose');
 
 const repetitionSchema = new Schema({
     repetition: {
-        type: String,
-        required: false
+        type: Number,
+        required: true
     },
     username: {
         type: String,
