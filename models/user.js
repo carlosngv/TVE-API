@@ -43,7 +43,8 @@ const userSchema = new Schema({
     },
     coach: {
         type: String,
-        defaultValue: "SIN_ASIGNAR",required: false // >:v ptm xd
+        defaultValue: "SIN_ASIGNAR",
+        required: false // >:v ptm xd
     }
 });
 
