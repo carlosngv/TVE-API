@@ -13,32 +13,37 @@ const userSchema = new Schema({
     },
     name: {
         type: String,
-        default: ''
+        default: '',
+        required: false,
     },
     gender: {
         type: String,
-        default: ''
+        default: '',
+        required: false,
     },
     age: {
         type: String,
-        default: ''
+        default: '',
+        required: false,
     },
     height: {
         type: String,
-        default: ''
+        default: '',
+        required: false,
     },
     weight: {
         type: String,
-        default: ''
+        default: '',
+        required: false,
     },
     isCoach: {
         type: Boolean,
-        required: true,
+        required: false,
         defaultValue: false,
     },
     coach: {
         type: String,
-        defaultValue: "SIN_ASIGNAR",required: true // >:v ptm xd
+        defaultValue: "SIN_ASIGNAR",required: false // >:v ptm xd
     }
 });
 
