@@ -12,19 +12,24 @@ const userSchema = new Schema({
         required: true,
     },
     name: {
-        type: String
+        type: String,
+        default: ''
     },
     gender: {
-        type: String
+        type: String,
+        default: ''
     },
     age: {
-        type: String
+        type: String,
+        default: ''
     },
     height: {
-        type: String
+        type: String,
+        default: ''
     },
     weight: {
-        type: String
+        type: String,
+        default: ''
     },
     isCoach: {
         type: Boolean,
@@ -33,7 +38,7 @@ const userSchema = new Schema({
     },
     coach: {
         type: String,
-        defaultValue: "SIN_ASIGNAR",required: true // >:v ptm xd 
+        defaultValue: "SIN_ASIGNAR",required: true // >:v ptm xd
     }
 });
 

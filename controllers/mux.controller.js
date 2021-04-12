@@ -28,7 +28,7 @@ const getData = async (req, res) => {
         await dbDistance.save();
         await dbVelocity.save();
         await dbRhythm.save();
-        await dbRepetition.save();    
+        await dbRepetition.save();
     } catch (error) {
         console.log("error Guardando")
     }
@@ -60,7 +60,7 @@ const fallos = async (req, res) =>{
         let objeto = await Rendition.findOne({ username: dbUser.username });
         if (objeto == undefined){
             const o = new Rendition({ username: dbUser.username , rendition: 1});
-            await o.save(); 
+            await o.save();
             return res.status(200).json({
                 ok: true,
                 msg: 'ok primera rendicion',
