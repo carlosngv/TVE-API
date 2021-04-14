@@ -68,7 +68,7 @@ userCtrl.createUserTest = async (req,res)=>{
 userCtrl.setWeight = async ( req, res ) => {
 
     try {
-        const { username, weigth } = req.body;
+        const { username, weight } = req.body;
         const dbUser = await model_user.findOneAndUpdate({ username }, { weight });
 
 
