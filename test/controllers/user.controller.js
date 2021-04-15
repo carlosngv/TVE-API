@@ -65,6 +65,30 @@ userCtrl.createUserTest = async (req,res)=>{
 }
 
 
+userCtrl.setWeight = async ( req, res ) => {
+
+    try {
+        const { username, weight } = req.body;
+        const dbUser = await model_user.findOneAndUpdate({ username }, { weight });
+
+
+        return res.status(200).json({
+            ok: true,
+            weight: dbUser.weight,
+            username: dbUser.username,
+            msg: '¡Su peso se ha guardado exitosamente!'
+        })
+
+
+    } catch (error) {
+        return res.status(400).json({
+            ok: false,
+            msg: 'Contacte al administrador...'
+        })
+    }
+
+}
+
 
 
 module.exports = userCtrl;

@@ -38,7 +38,7 @@ userCtrl.getUSER = async(req,res) =>{
     }
 }
 
-userCtrl.asignarUser = async (req,res)=> { // NO FUNCIONA HAY QUE USAR OTRA
+userCtrl.asignarUser = async (req,res)=> { // NO FUNCIONA HAY QUE USAR OTRA 
     console.log(req.params.user);
     console.log(req.body);
     try {
@@ -63,7 +63,6 @@ userCtrl.createUserTest = async (req,res)=>{
     console.log("NEW USER: ", nuevo);
     res.send('ok')
 }
-
 
 
 

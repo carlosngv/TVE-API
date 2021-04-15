@@ -7,13 +7,9 @@ const velocitySchema = new Schema({
     },
     username: {
         type: String,
-    },
-    fecha:{
-        type: String,
-        required: true
     }
 },
-    { timestamps: false }
+    { timestamps: true }
 );
 
 module.exports = model('Velocity', velocitySchema);

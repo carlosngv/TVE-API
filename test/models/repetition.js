@@ -8,14 +8,9 @@ const repetitionSchema = new Schema({
     username: {
         type: String,
         required: true
-    },
-    fecha:{
-        type: String,
-        required: true,
-        default: Date.now()
     }
 },
-{ timestamps: false }
+    { timestamps: true }
 );
 
 module.exports = model('Repetition', repetitionSchema);

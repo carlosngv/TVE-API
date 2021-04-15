@@ -19,16 +19,20 @@ const getData = async (req, res) => {
             msg: 'El usuario no existe',
         });
     }
+    var f = new Date();
+    //"%Y-%m-%d-%H-%M-%S"
+    let fechaFormateada = f.getFullYear()+"-"+(f.getMonth()+1)+"-"+f.getDate()+"-"+f.getHours()+"-"+f.getMinutes()+"-"+f.getSeconds();
+    console.log(fechaFormateada)
     const username = dbUser.username;
-    const dbDistance = new Distance({ distance: distancia, username: username });
-    const dbVelocity = new Velocity({ velocity: velocidad, username: username });
-    const dbRhythm = new Rhythm({ rhythm: ritmo , username: username });
-    const dbRepetition = new Repetition( { repetition: repeticion, username: username } );
+    const dbDistance = new Distance({ distance: distancia, username: username , fecha: fechaFormateada});
+    const dbVelocity = new Velocity({ velocity: velocidad, username: username , fecha: fechaFormateada });
+    const dbRhythm = new Rhythm({ rhythm: ritmo , username: username , fecha_: fechaFormateada });
+    const dbRepetition = new Repetition( { repetition: repeticion, username: username  , fecha: fechaFormateada } );
     try {
         await dbDistance.save();
         await dbVelocity.save();
         await dbRhythm.save();
-        await dbRepetition.save();
+        await dbRepetition.save();    
     } catch (error) {
         console.log("error Guardando")
     }
@@ -47,38 +51,23 @@ const getData = async (req, res) => {
 }
 
 const fallos = async (req, res) =>{
-    const {_id} = req.params;
-    console.log("incrementando: ", _id );
-    try {
-        const dbUser = await User.findById({ _id});
-        if(!dbUser) {
-            return res.status(400).json({
-                ok: false,
-                msg: 'El usuario no existe',
-            });
-        }
-        let objeto = await Rendition.findOne({ username: dbUser.username });
-        if (objeto == undefined){
-            const o = new Rendition({ username: dbUser.username , rendition: 1});
-            await o.save();
-            return res.status(200).json({
-                ok: true,
-                msg: 'ok primera rendicion',
-            });
-        }else{
-            const valorAnterior = objeto.rendition;
-            await Rendition.findOneAndDelete({username: dbUser.username});
-            const nuevo = new Rendition({ username: dbUser.username , rendition: valorAnterior+1});
-            await nuevo.save();
-          //  console.log("OK............." , nuevo)
-            return res.status(200).json({
-                ok: true,
-                msg: 'ok-INCREMENTANDO',
-            });
-        }
+    const { username , repeticion} = req.params;
+    //abcprueba
+    //2021-04-10-15-58-48
 
+    var f = new Date();
+    //"%Y-%m-%d-%H-%M-%S"
+    let fechaFormateada = f.getFullYear()+"-"+(f.getMonth()+1)+"-"+f.getDate()+"-"+f.getHours()+"-"+f.getMinutes()+"-"+f.getSeconds();
+    console.log(fechaFormateada)
+
+    console.log({username: username , repeticion: repeticion , fecha: fechaFormateada});
+    try {
+    const dbrendicion = new Rendition({username: username , repeticion: repeticion , fecha: fechaFormateada})
+    await dbrendicion.save();
+    res.json({msg:'ok'});
     } catch (error) {
         console.log(error);
+        res.json({msg:'F'});
     }
 }
 

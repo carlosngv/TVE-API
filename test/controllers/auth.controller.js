@@ -33,8 +33,14 @@ const createUser = async (req, res = express.response) => {
         // Gen JWT
         const token = await createJWT(user.id, user.username);
 
-
-        res.status(201).json({
+        if(user.name === '') {
+            return res.status(201).json({
+                ok: true,
+                uid: user.id,
+                username: user.username,
+            });
+        }
+        return res.status(201).json({
             ok: true,
             uid: user.id,
             username: user.username,

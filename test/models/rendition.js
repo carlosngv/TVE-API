@@ -2,21 +2,16 @@ const { Schema, model } = require('mongoose');
 
 
 const renditionSchema = new Schema({
-    repeticion: {
+    rendition: {
         type: Number,
         required: true
     },
     username: {
         type: String,
         required: true,
-    },
-    fecha:{
-        type: String,
-        required: true,
-        default: Date.now()
     }
 }, {
-    timestamps: false
+    timestamps: true
 });
 
 module.exports = model('Rendition', renditionSchema);
